@@ -2,7 +2,7 @@ package com.tamminhdao.ttt
 
 class Game {
   def play(board: Vector[Symbol],
-           players: List[AIPlayer],
+           players: List[Player],
            symbols: List[Symbol]): Unit = {
 
     println(board)
