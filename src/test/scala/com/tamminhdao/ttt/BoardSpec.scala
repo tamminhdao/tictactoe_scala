@@ -89,6 +89,16 @@ class BoardSpec extends FunSpec {
      assert(!Board.isEmpty(board))
    }
 
+   it("can return a list of all the empty cells") {
+     val board = Vector(
+       'X, '_, 'O,
+       '_, 'X, '_,
+       'O, '_, 'X
+     )
+     val emptyCells = Vector(1,3,5,7)
+     assert(Board.availableCells(board) == emptyCells)
+   }
+
    it("returns all the rows") {
      val board = Vector(
        'X, 'O, '_,

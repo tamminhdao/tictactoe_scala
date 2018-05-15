@@ -31,6 +31,12 @@ object Board {
     board == newBoard(dimension(board))
   }
 
+  def availableCells(board: Vector[Symbol]): Vector[Int] = {
+    board.zipWithIndex.collect {
+      case(cell, index) if cell == emptyCell => index
+    }
+  }
+
   def winner(board: Vector[Symbol]): Symbol = {
     if (Rule.hasWinner(board)) {
       val threeInARow = Rule.winningCombos(board).filter(combo => Rule.identicalPlayerSymbol(combo))
