@@ -2,8 +2,6 @@ package com.tamminhdao.ttt
 
 object Board {
   val emptyCell = '_
-  val playerOne = 'X
-  val playerTwo = 'O
 
   def newBoard(size: Int): Vector[Symbol] = Vector.fill(size*size)(emptyCell)
 
@@ -42,8 +40,10 @@ object Board {
       val threeInARow = Rule.winningCombos(board).filter(combo => Rule.identicalPlayerSymbol(combo))
       val winner = threeInARow.head
       winner.head
-    } else {
+    } else if (Rule.isATie(board)) {
       'DoesNotExist
+    } else {
+      'TBD
     }
   }
 
