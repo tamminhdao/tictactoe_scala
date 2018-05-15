@@ -31,6 +31,16 @@ object Board {
     board == newBoard(dimension(board))
   }
 
+  def winner(board: Vector[Symbol]): Symbol = {
+    if (Rule.hasWinner(board)) {
+      val threeInARow = Rule.winningCombos(board).filter(combo => Rule.identicalPlayerSymbol(combo))
+      val winner = threeInARow.head
+      winner.head
+    } else {
+      'DoesNotExist
+    }
+  }
+
   def rows(board: Vector[Symbol]): Vector[Vector[Symbol]] = {
     val boardSize = dimension(board)
     board.sliding(boardSize, boardSize).toVector

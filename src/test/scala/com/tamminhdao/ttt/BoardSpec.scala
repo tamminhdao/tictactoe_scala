@@ -118,5 +118,15 @@ class BoardSpec extends FunSpec {
      val diagonals = Vector(Vector('X, 'X, 'X), Vector('O, 'X, 'O))
      assert(diagonals == Board.diagonals(board))
    }
+
+   it("returns the correct winner symbol") {
+     val board = Vector(
+       'X, '_, 'O,
+       '_, 'O, '_,
+       'O, '_, 'X
+     )
+     val winner = Board.winner(board)
+     assert(winner == 'O)
+   }
  }
 }

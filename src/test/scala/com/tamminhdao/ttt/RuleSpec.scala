@@ -133,5 +133,15 @@ class RuleSpec extends FunSpec {
       assert(!Rule.isATie(board))
       assert(!Rule.gameInProgress(board))
     }
+
+    it("::identicalPlayerSymbol:: returns True if three items in the collection are identical") {
+      val triplet = Vector('X, 'X, 'X)
+      assert(Rule.identicalPlayerSymbol(triplet))
+    }
+
+    it("::identicalPlayerSymbol:: returns False if three items in the collection are all empty cells") {
+      val triplet = Vector('_, '_, '_)
+      assert(!Rule.identicalPlayerSymbol(triplet))
+    }
   }
 }
