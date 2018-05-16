@@ -5,17 +5,18 @@ class Game {
            players: List[Player],
            symbols: List[Symbol]): Unit = {
 
-    println(board)
+    IO.publishOutput(Message.formatBoard(board))
+    IO.publishNewLine()
 
     if (Rule.gameInProgress(board)) {
       val currentPlayer = players.head
       val currentPlayerSymbol = symbols.head
-      val cellIndex = currentPlayer.obtainCellSelection(board)
+      val cellIndex = currentPlayer.obtainCellSelection(board, IO)
       val updatedBoard = Board.insertSymbol(board, cellIndex, currentPlayerSymbol)
 
       play(updatedBoard, players.reverse, symbols.reverse)
     } else {
-       println("Game Over")
+       IO.publishOutput("Game Over")
     }
   }
 }

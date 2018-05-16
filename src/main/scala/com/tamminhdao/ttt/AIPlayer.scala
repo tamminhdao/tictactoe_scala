@@ -2,7 +2,7 @@ package com.tamminhdao.ttt
 
 class AIPlayer() extends Player {
 
-  override def obtainCellSelection(board: Vector[Symbol]): Int = {
+  override def obtainCellSelection(board: Vector[Symbol], IO: InOut): Int = {
     val boardState = Board.isEmpty(board)
     boardState match {
       case true => 0
