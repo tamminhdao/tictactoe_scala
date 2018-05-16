@@ -10,7 +10,7 @@ class AIPlayerSpec extends FunSpec {
         'O, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 3)
+      assert(playerX.obtainCellSelection(board, IO) == 3)
     }
 
     it("takes an immediate win over creating a fork") {
@@ -20,7 +20,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'O, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 6)
+      assert(playerX.obtainCellSelection(board, IO) == 6)
     }
 
     it("takes an immediate win over an eventual tie") {
@@ -30,7 +30,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'O, 'O
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 3)
+      assert(playerX.obtainCellSelection(board, IO) == 3)
     }
 
     it("takes a win over blocking an opponent") {
@@ -40,7 +40,7 @@ class AIPlayerSpec extends FunSpec {
         'O, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 8)
+      assert(playerX.obtainCellSelection(board, IO) == 8)
     }
 
     it("prevents opponent from creating a fork") {
@@ -50,7 +50,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'X, 'O
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 2)
+      assert(playerX.obtainCellSelection(board, IO) == 2)
     }
 
     it("takes the center cell as the second move of the game if that cell is empty") {
@@ -60,7 +60,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 4)
+      assert(playerX.obtainCellSelection(board, IO) == 4)
     }
 
     it("takes the first cell if the board is empty") {
@@ -70,7 +70,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board) == 0)
+      assert(playerX.obtainCellSelection(board, IO) == 0)
     }
   }
 }
