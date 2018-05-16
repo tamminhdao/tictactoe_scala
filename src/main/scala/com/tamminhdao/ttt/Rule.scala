@@ -23,7 +23,7 @@ object Rule {
       winningCombos(board).exists(combo => identicalPlayerSymbol(combo))
   }
 
-  private def identicalPlayerSymbol(collective: Vector[Symbol]): Boolean = {
+  def identicalPlayerSymbol(collective: Vector[Symbol]): Boolean = {
     val head = collective.head
     val identical = collective.forall(element => element == head)
     identical && head!= Board.emptyCell
