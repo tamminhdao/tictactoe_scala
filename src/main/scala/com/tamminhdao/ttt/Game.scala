@@ -11,12 +11,16 @@ class Game {
     if (Rule.gameInProgress(board)) {
       val currentPlayer = players.head
       val currentPlayerSymbol = symbols.head
+
+      IO.publishOutput(Message.announceTurn(currentPlayerSymbol))
+
       val cellIndex = currentPlayer.obtainCellSelection(board, IO)
       val updatedBoard = Board.insertSymbol(board, cellIndex, currentPlayerSymbol)
 
       play(updatedBoard, players.reverse, symbols.reverse)
     } else {
-       IO.publishOutput("Game Over")
+       IO.publishOutput(Message.gameOver())
+       IO.publishOutput(Message.gameEndStatus(board))
     }
   }
 }

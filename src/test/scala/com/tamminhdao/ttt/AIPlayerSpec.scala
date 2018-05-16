@@ -53,7 +53,7 @@ class AIPlayerSpec extends FunSpec {
       assert(playerX.obtainCellSelection(board, IO) == 2)
     }
 
-    it("takes the center cell as the second move of the game if that cell is empty") {
+    it("takes the center cell to prevent a potential fork") {
       val board = Vector(
         'O, '_, '_,
         '_, '_, '_,
