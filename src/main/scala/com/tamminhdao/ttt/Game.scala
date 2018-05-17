@@ -4,7 +4,7 @@ class Game {
   def play(board: Vector[Symbol],
            players: List[Player],
            symbols: List[Symbol],
-           IO: InOut): Unit = {
+           IO: InOut): Vector[Symbol] = {
 
     IO.publishOutput(Message.formatBoard(board))
     IO.publishNewLine()
@@ -22,6 +22,7 @@ class Game {
     } else {
        IO.publishOutput(Message.gameOver())
        IO.publishOutput(Message.gameEndStatus(board))
+       board
     }
   }
 }
