@@ -3,7 +3,8 @@ package com.tamminhdao.ttt
 class Game {
   def play(board: Vector[Symbol],
            players: List[Player],
-           symbols: List[Symbol]): Unit = {
+           symbols: List[Symbol],
+           IO: InOut): Vector[Symbol] = {
 
     IO.publishOutput(Message.formatBoard(board))
     IO.publishNewLine()
@@ -17,10 +18,11 @@ class Game {
       val cellIndex = currentPlayer.obtainCellSelection(board, IO, currentPlayerSymbol)
       val updatedBoard = Board.insertSymbol(board, cellIndex, currentPlayerSymbol)
 
-      play(updatedBoard, players.reverse, symbols.reverse)
+      play(updatedBoard, players.reverse, symbols.reverse, IO)
     } else {
        IO.publishOutput(Message.gameOver())
        IO.publishOutput(Message.gameEndStatus(board))
+       board
     }
   }
 }

@@ -5,7 +5,7 @@ object MockIO extends InOut {
     "1"
   }
 
-  def publishOutput(output: String): Unit = {
-    obtainInput("1")
-  }
+  def publishOutput(output: String): Unit = {}
+
+  def publishNewLine(): Unit = {}
 }

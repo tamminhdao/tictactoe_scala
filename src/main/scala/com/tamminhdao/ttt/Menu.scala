@@ -23,7 +23,7 @@ object Menu {
     val player2 = new HumanPlayer()
     val players = List(player1, player2)
     val symbols = List('X, 'O)
-    ttt.play(emptyBoard, players, symbols)
+    ttt.play(emptyBoard, players, symbols, IO)
   }
 
   private def AIvsHuman(): Unit = {
@@ -34,7 +34,7 @@ object Menu {
     val player2 = new HumanPlayer()
     val players = List(player1, player2)
     val symbols = List('X, 'O)
-    ttt.play(emptyBoard, players, symbols)
+    ttt.play(emptyBoard, players, symbols, IO)
   }
 
   private def humanVsAI(): Unit = {
@@ -45,6 +45,6 @@ object Menu {
     val player2 = new AIPlayer()
     val players = List(player1, player2)
     val symbols = List('O, 'X)
-    ttt.play(emptyBoard, players, symbols)
+    ttt.play(emptyBoard, players, symbols, IO)
   }
 }
