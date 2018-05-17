@@ -6,7 +6,7 @@ class HumanPlayerSpec extends FunSpec {
     it("can obtain a cell selection") {
       val board = Board.newBoard(3)
       val human = new HumanPlayer()
-      val cell = human.obtainCellSelection(board, MockIO)
+      val cell = human.obtainCellSelection(board, MockIO, 'O)
       assert(cell == 1)
     }
   }

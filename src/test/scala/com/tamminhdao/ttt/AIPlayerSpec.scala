@@ -3,55 +3,86 @@ import org.scalatest.FunSpec
 
 class AIPlayerSpec extends FunSpec {
   describe("The unbeatable computer player") {
-    it("blocks an opponent's win") {
+    it("blocks an opponent's win - as player X") {
       val board = Vector(
         'O, 'O, 'X,
         '_, 'X, '_,
         'O, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 3)
+      assert(playerX.obtainCellSelection(board, IO, 'X) == 3)
     }
 
-    it("takes an immediate win over creating a fork") {
+    it("blocks an opponent's win - as player O") {
+      val board = Vector(
+        'O, 'O, 'X,
+        'X, 'X, '_,
+        'O, '_, '_
+      )
+      val playerX = new AIPlayer()
+      assert(playerX.obtainCellSelection(board, IO, 'O) == 5)
+    }
+
+    it("takes an immediate win over creating a fork - as player X") {
       val board = Vector(
         'O, 'O, 'X,
         '_, 'X, '_,
         '_, 'O, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 6)
+      assert(playerX.obtainCellSelection(board, IO, 'X) == 6)
     }
 
-    it("takes an immediate win over an eventual tie") {
+    it("takes an immediate win over creating a fork - as player O") {
+      val board = Vector(
+        'O, 'X, 'X,
+        '_, 'O, '_,
+        '_, 'X, '_
+      )
+      val playerX = new AIPlayer()
+      assert(playerX.obtainCellSelection(board, IO, 'O) == 8)
+    }
+
+    it("takes an immediate win over an eventual tie - as player X") {
       val board = Vector(
         '_, '_, 'O,
         '_, 'X, 'X,
         '_, 'O, 'O
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 3)
+      assert(playerX.obtainCellSelection(board, IO, 'X) == 3)
     }
 
-    it("takes a win over blocking an opponent") {
+    it("takes an immediate win over an eventual tie - as player O") {
+      val board = Vector(
+        'X, '_, '_,
+        'O, 'O, '_,
+        'X, 'X, '_
+      )
+      val playerX = new AIPlayer()
+      assert(playerX.obtainCellSelection(board, IO, 'O) == 5)
+    }
+
+    it("takes a win over blocking an opponent - as player X") {
       val board = Vector(
         'O, 'O, 'X,
         '_, '_, 'X,
         'O, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 8)
+      assert(playerX.obtainCellSelection(board, IO, 'X) == 8)
     }
 
-    it("prevents opponent from creating a fork") {
+    it("takes a win over blocking an opponent - as player O") {
       val board = Vector(
-        '_, 'O, '_,
-        'O, 'X, '_,
-        '_, 'X, 'O
+        'X, '_, 'X,
+        '_, '_, 'X,
+        '_, 'O, 'O
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 2)
+      assert(playerX.obtainCellSelection(board, IO, 'O) == 6)
     }
+
 
     it("takes the center cell to prevent a potential fork") {
       val board = Vector(
@@ -60,7 +91,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 4)
+      assert(playerX.obtainCellSelection(board, IO, 'X) == 4)
     }
 
     it("takes the first cell if the board is empty") {
@@ -70,7 +101,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_
       )
       val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO) == 0)
+      assert(playerX.obtainCellSelection(board, IO, 'O) == 0)
     }
   }
 }
