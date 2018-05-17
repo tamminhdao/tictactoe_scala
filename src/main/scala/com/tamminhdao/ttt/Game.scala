@@ -14,7 +14,7 @@ class Game {
 
       IO.publishOutput(Message.announceTurn(currentPlayerSymbol))
 
-      val cellIndex = currentPlayer.obtainCellSelection(board, IO)
+      val cellIndex = currentPlayer.obtainCellSelection(board, IO, currentPlayerSymbol)
       val updatedBoard = Board.insertSymbol(board, cellIndex, currentPlayerSymbol)
 
       play(updatedBoard, players.reverse, symbols.reverse)
