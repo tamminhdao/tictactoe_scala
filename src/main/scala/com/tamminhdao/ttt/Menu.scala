@@ -1,50 +1,32 @@
 package com.tamminhdao.ttt
 
 object Menu {
-  def welcomeMessage(): Unit = {
+
+  def initGame(): Unit = {
     IO.publishOutput(Message.welcome())
+    val ttt = new Game()
+    val emptyBoard = Board.newBoard(3)
+    val players = setUpPlayers()
+    val symbols = List('X, 'O)
+    IO.publishOutput(Message.announceGameStart())
+    ttt.play(emptyBoard, players, symbols, IO)
   }
 
-  def start(): Unit = {
-    val gameType = IO.obtainInput(Message.selectGameType())
-    gameType match {
-      case "1" => humanVsHuman()
-      case "2" => AIvsHuman()
-      case "3" => humanVsAI()
-      case _ => start()
+  def setUpPlayers(): List[Player] = {
+    val playerOne = Menu.selectPlayerType("one")
+    val playerTwo = Menu.selectPlayerType("two")
+    List(playerOne, playerTwo)
+  }
+
+  private def selectPlayerType(playerID: String): Player = {
+    val player = IO.obtainInput(Message.selectPlayer(playerID))
+    player match {
+      case "1" => new HumanPlayer()
+      case "2" => new EasyAI()
+      case "3" => new AIPlayer()
+      case _ =>
+        IO.publishOutput(Message.invalidInput())
+        selectPlayerType(playerID)
     }
-  }
-
-  private def humanVsHuman(): Unit = {
-    IO.publishOutput(Message.humanVsHuman())
-    val ttt = new Game()
-    val emptyBoard = Board.newBoard(3)
-    val player1 = new HumanPlayer()
-    val player2 = new HumanPlayer()
-    val players = List(player1, player2)
-    val symbols = List('X, 'O)
-    ttt.play(emptyBoard, players, symbols, IO)
-  }
-
-  private def AIvsHuman(): Unit = {
-    IO.publishOutput(Message.AIVsHuman())
-    val ttt = new Game()
-    val emptyBoard = Board.newBoard(3)
-    val player1 = new AIPlayer()
-    val player2 = new HumanPlayer()
-    val players = List(player1, player2)
-    val symbols = List('X, 'O)
-    ttt.play(emptyBoard, players, symbols, IO)
-  }
-
-  private def humanVsAI(): Unit = {
-    IO.publishOutput(Message.humanVsAI())
-    val ttt = new Game()
-    val emptyBoard = Board.newBoard(3)
-    val player1 = new HumanPlayer()
-    val player2 = new AIPlayer()
-    val players = List(player1, player2)
-    val symbols = List('O, 'X)
-    ttt.play(emptyBoard, players, symbols, IO)
   }
 }

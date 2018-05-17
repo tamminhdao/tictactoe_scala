@@ -5,8 +5,10 @@ class HumanPlayer extends Player {
     val cell = IO.obtainInput(Message.cellSelection())
     val valid = Validator.validate(board, cell)
     valid match {
-      case false => obtainCellSelection(board, IO, selfSymbol)
       case true => cell.toInt
+      case false =>
+        IO.publishOutput(Message.invalidInput())
+        obtainCellSelection(board, IO, selfSymbol)
     }
   }
 }

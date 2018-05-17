@@ -7,22 +7,17 @@ object Message {
         "**********************\n"
   }
 
-  def selectGameType(): String = {
-    "Select 1 for a human vs human game\n" +
-      "Select 2 for a computer vs human game\n" +
-        "Select 3 for a human vs computer game\n"
+  def selectPlayer(playerID: String): String = {
+    s"Setting up player $playerID\n\n" +
+    "Select 1 for a human player\n" +
+      "    or 2 for an easy computer player\n" +
+       "    or 3 for an unbeatable computer player.\n"
   }
 
-  def humanVsHuman(): String = {
-    "Starting a new Human versus Human game...\n"
-  }
-
-  def AIVsHuman(): String = {
-    "Starting a new Computer versus Human game...\n"
-  }
-
-  def humanVsAI(): String = {
-    "Starting a new Human versus Computer game...\n"
+  def announceGameStart(): String = {
+    "The game will start now.\n" +
+    "Player one's symbol is X.\n" +
+    "Player two's symbol is O.\n"
   }
 
   def formatBoard(board: Vector[Symbol]): String = {
@@ -51,6 +46,10 @@ object Message {
 
   def cellSelection(): String = {
     "Select an empty cell on the board:\n"
+  }
+
+  def invalidInput(): String = {
+    "That is not a valid input. Try again!\n"
   }
 
   def announceTurn(symbol: Symbol): String = {
