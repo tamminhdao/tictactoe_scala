@@ -10,9 +10,25 @@ object Menu {
     val symbols = List('X, 'O)
     IO.publishOutput(Message.announceGameStart())
     ttt.play(emptyBoard, players, symbols, IO)
+    playAgain()
   }
 
-  def setUpPlayers(): List[Player] = {
+  private def playAgain(): Unit = {
+    val answer = IO.obtainInput(Message.playAgain())
+    val affirmative = List("yes", "Yes", "y", "Y")
+    val negative = List("no", "No", "n", "N")
+
+    if (affirmative.contains(answer)) {
+      Menu.initGame()
+    } else if (negative.contains(answer)) {
+      IO.publishOutput(Message.goodBye())
+    } else {
+      IO.publishOutput(Message.invalidInput())
+      playAgain()
+    }
+  }
+
+  private def setUpPlayers(): List[Player] = {
     val playerOne = Menu.selectPlayerType("one")
     val playerTwo = Menu.selectPlayerType("two")
     List(playerOne, playerTwo)

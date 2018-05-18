@@ -68,4 +68,12 @@ object Message {
       case 'DoesNotExist => "It's a tie."
     }
   }
+
+  def playAgain(): String = {
+    "Do you want to play again?\n"
+  }
+
+  def goodBye(): String = {
+    "Goodbye!\n"
+  }
 }
