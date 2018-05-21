@@ -1,4 +1,5 @@
-package com.tamminhdao.ttt
+package com.tamminhdao.ttt.Players
+import com.tamminhdao.ttt.IO
 import org.scalatest.FunSpec
 
 class EasyAISpec extends FunSpec {

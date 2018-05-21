@@ -1,4 +1,5 @@
 package com.tamminhdao.ttt
+import com.tamminhdao.ttt.Players.{EasyAI, OpportunisticAI, UnbeatableAI}
 import org.scalatest.FunSpec
 
 class GameSpec extends FunSpec {
@@ -24,8 +25,8 @@ class GameSpec extends FunSpec {
     it("between 2 unbeatable AIs: end in a tie") {
       val ttt = new Game()
       val emptyBoard = Board.newBoard(3)
-      val player1 = new AIPlayer()
-      val player2 = new AIPlayer()
+      val player1 = new UnbeatableAI()
+      val player2 = new UnbeatableAI()
       val players = List(player1, player2)
       val symbols = List('X, 'O)
       val finalBoard = ttt.play(emptyBoard, players, symbols, MockIO)
@@ -35,7 +36,7 @@ class GameSpec extends FunSpec {
     it("between an unbeatable AI and an easy AI: end in a win for the unbeatable AI") {
       val ttt = new Game()
       val emptyBoard = Board.newBoard(3)
-      val player1 = new AIPlayer()
+      val player1 = new UnbeatableAI()
       val player2 = new EasyAI()
       val players = List(player1, player2)
       val symbols = List('O, 'X)
@@ -55,7 +56,7 @@ class GameSpec extends FunSpec {
       val ttt = new Game()
       val emptyBoard = Board.newBoard(3)
       val player1 = new EasyAI()
-      val player2 = new AIPlayer()
+      val player2 = new UnbeatableAI()
       val players = List(player1, player2)
       val symbols = List('O, 'X)
       val finalBoard = ttt.play(emptyBoard, players, symbols, MockIO)
@@ -74,7 +75,7 @@ class GameSpec extends FunSpec {
       for (_ <- 1 to 50) {
         val ttt = new Game()
         val emptyBoard = Board.newBoard(3)
-        val player1 = new AIPlayer()
+        val player1 = new UnbeatableAI()
         val player2 = new OpportunisticAI()
         val players = List(player1, player2)
         val symbols = List('O, 'X)
@@ -92,7 +93,7 @@ class GameSpec extends FunSpec {
         val ttt = new Game()
         val emptyBoard = Board.newBoard(3)
         val player1 = new OpportunisticAI()
-        val player2 = new AIPlayer()
+        val player2 = new UnbeatableAI()
         val players = List(player1, player2)
         val symbols = List('O, 'X)
         val finalBoard = ttt.play(emptyBoard, players, symbols, MockIO)

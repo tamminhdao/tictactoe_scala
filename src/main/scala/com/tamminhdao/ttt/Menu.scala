@@ -1,4 +1,5 @@
 package com.tamminhdao.ttt
+import com.tamminhdao.ttt.Players._
 
 object Menu {
 
@@ -40,7 +41,7 @@ object Menu {
       case "1" => new HumanPlayer()
       case "2" => new EasyAI()
       case "3" => new OpportunisticAI()
-      case "4" => new AIPlayer()
+      case "4" => new UnbeatableAI()
       case _ =>
         IO.publishOutput(Message.invalidInput())
         selectPlayerType(playerID)
