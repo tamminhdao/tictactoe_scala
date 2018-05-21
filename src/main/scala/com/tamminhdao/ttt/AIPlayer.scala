@@ -8,7 +8,7 @@ class AIPlayer() extends Player {
     val boardState = Board.isEmpty(board)
     boardState match {
       case true => 0
-      case false => tryEveryMove(board, selfSymbol).sorted.reverse.head._2
+      case false => tryEveryMove(board, selfSymbol).max._2
     }
   }
 

@@ -19,8 +19,8 @@ class AIPlayerSpec extends FunSpec {
         'X, 'X, '_,
         'O, '_, '_
       )
-      val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO, 'O) == 5)
+      val playerO = new AIPlayer()
+      assert(playerO.obtainCellSelection(board, IO, 'O) == 5)
     }
 
     it("takes an immediate win over creating a fork - as player X") {
@@ -39,8 +39,8 @@ class AIPlayerSpec extends FunSpec {
         '_, 'O, '_,
         '_, 'X, '_
       )
-      val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO, 'O) == 8)
+      val playerO = new AIPlayer()
+      assert(playerO.obtainCellSelection(board, IO, 'O) == 8)
     }
 
     it("takes an immediate win over an eventual tie - as player X") {
@@ -59,8 +59,8 @@ class AIPlayerSpec extends FunSpec {
         'O, 'O, '_,
         'X, 'X, '_
       )
-      val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO, 'O) == 5)
+      val playerO = new AIPlayer()
+      assert(playerO.obtainCellSelection(board, IO, 'O) == 5)
     }
 
     it("takes a win over blocking an opponent - as player X") {
@@ -79,8 +79,8 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, 'X,
         '_, 'O, 'O
       )
-      val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO, 'O) == 6)
+      val playerO = new AIPlayer()
+      assert(playerO.obtainCellSelection(board, IO, 'O) == 6)
     }
 
 
@@ -100,8 +100,8 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_,
         '_, '_, '_
       )
-      val playerX = new AIPlayer()
-      assert(playerX.obtainCellSelection(board, IO, 'O) == 0)
+      val playerO = new AIPlayer()
+      assert(playerO.obtainCellSelection(board, IO, 'O) == 0)
     }
   }
 }
