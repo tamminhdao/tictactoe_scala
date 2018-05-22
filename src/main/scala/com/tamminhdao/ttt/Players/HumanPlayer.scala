@@ -1,4 +1,5 @@
-package com.tamminhdao.ttt
+package com.tamminhdao.ttt.Players
+import com.tamminhdao.ttt.{InOut, Message, Validator}
 
 class HumanPlayer extends Player {
   override def obtainCellSelection(board: Vector[Symbol], IO: InOut, selfSymbol: Symbol): Int = {

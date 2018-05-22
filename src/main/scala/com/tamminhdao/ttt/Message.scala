@@ -11,7 +11,8 @@ object Message {
     s"Setting up player $playerID\n\n" +
     "Select 1 for a human player\n" +
       "    or 2 for an easy computer player\n" +
-       "    or 3 for an unbeatable computer player.\n"
+        "    or 3 for a medium computer player\n" +
+          "    or 4 for an unbeatable computer player.\n"
   }
 
   def announceGameStart(): String = {

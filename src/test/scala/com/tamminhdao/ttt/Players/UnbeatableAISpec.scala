@@ -1,7 +1,8 @@
-package com.tamminhdao.ttt
+package com.tamminhdao.ttt.Players
+import com.tamminhdao.ttt.IO
 import org.scalatest.FunSpec
 
-class AIPlayerSpec extends FunSpec {
+class UnbeatableAISpec extends FunSpec {
   describe("The unbeatable computer player") {
     it("blocks an opponent's win - as player X") {
       val board = Vector(
@@ -9,7 +10,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'X, '_,
         'O, '_, '_
       )
-      val playerX = new AIPlayer()
+      val playerX = new UnbeatableAI()
       assert(playerX.obtainCellSelection(board, IO, 'X) == 3)
     }
 
@@ -19,7 +20,7 @@ class AIPlayerSpec extends FunSpec {
         'X, 'X, '_,
         'O, '_, '_
       )
-      val playerO = new AIPlayer()
+      val playerO = new UnbeatableAI()
       assert(playerO.obtainCellSelection(board, IO, 'O) == 5)
     }
 
@@ -29,7 +30,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'X, '_,
         '_, 'O, '_
       )
-      val playerX = new AIPlayer()
+      val playerX = new UnbeatableAI()
       assert(playerX.obtainCellSelection(board, IO, 'X) == 6)
     }
 
@@ -39,7 +40,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'O, '_,
         '_, 'X, '_
       )
-      val playerO = new AIPlayer()
+      val playerO = new UnbeatableAI()
       assert(playerO.obtainCellSelection(board, IO, 'O) == 8)
     }
 
@@ -49,7 +50,7 @@ class AIPlayerSpec extends FunSpec {
         '_, 'X, 'X,
         '_, 'O, 'O
       )
-      val playerX = new AIPlayer()
+      val playerX = new UnbeatableAI()
       assert(playerX.obtainCellSelection(board, IO, 'X) == 3)
     }
 
@@ -59,7 +60,7 @@ class AIPlayerSpec extends FunSpec {
         'O, 'O, '_,
         'X, 'X, '_
       )
-      val playerO = new AIPlayer()
+      val playerO = new UnbeatableAI()
       assert(playerO.obtainCellSelection(board, IO, 'O) == 5)
     }
 
@@ -69,7 +70,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, 'X,
         'O, '_, '_
       )
-      val playerX = new AIPlayer()
+      val playerX = new UnbeatableAI()
       assert(playerX.obtainCellSelection(board, IO, 'X) == 8)
     }
 
@@ -79,7 +80,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, 'X,
         '_, 'O, 'O
       )
-      val playerO = new AIPlayer()
+      val playerO = new UnbeatableAI()
       assert(playerO.obtainCellSelection(board, IO, 'O) == 6)
     }
 
@@ -90,7 +91,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_,
         '_, '_, '_
       )
-      val playerX = new AIPlayer()
+      val playerX = new UnbeatableAI()
       assert(playerX.obtainCellSelection(board, IO, 'X) == 4)
     }
 
@@ -100,7 +101,7 @@ class AIPlayerSpec extends FunSpec {
         '_, '_, '_,
         '_, '_, '_
       )
-      val playerO = new AIPlayer()
+      val playerO = new UnbeatableAI()
       assert(playerO.obtainCellSelection(board, IO, 'O) == 0)
     }
   }

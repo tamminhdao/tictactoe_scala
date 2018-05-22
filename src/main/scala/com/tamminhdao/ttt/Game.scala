@@ -1,4 +1,5 @@
 package com.tamminhdao.ttt
+import com.tamminhdao.ttt.Players.Player
 
 class Game {
   def play(board: Vector[Symbol],
